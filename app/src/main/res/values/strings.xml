@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="bio">I am a Senior Android Engineer with six years worth of experience in developing Android applications. My passion always resided in creating beautiful applications, and researching for new ways to improve user experience for mobile devices.
+</string>
+    <string name="reykjavik"><u>Reykjavik</u></string>
+    <string name="benidobre_gmail_com"><u>benidobre@gmail.com</u></string>
+    <string name="mon_jul_14_2015"><u>Mon , Jul 14 , 2015</u></string>
+    <string name="wed_jun_03_2016"><u>Wed , Jun 03 , 2016</u></string>
+    <string name="_55"><u>55</u></string>
+    <string name="_2"><u>2</u></string>
+    <string name="logout">Logout</string>
+
+</resources>
