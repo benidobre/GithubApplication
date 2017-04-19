@@ -9,5 +9,6 @@
     <string name="_55"><u>55</u></string>
     <string name="_2"><u>2</u></string>
     <string name="logout">Logout</string>
+    <string name="repo_name_owner">%1$s(%2$s)</string>
 
 </resources>
