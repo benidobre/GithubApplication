@@ -1,6 +1,9 @@
 package com.example.beni.myapplication;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.icu.text.SimpleDateFormat;
 import android.preference.PreferenceManager;
@@ -39,6 +42,18 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private TextView mPublicRepos;
     private TextView mPrivateRepos;
     private GithubProfile mDisplayedProfile;
+//    private MyReceiver mMyReceiver;
+//
+//    public static class MyReceiver extends BroadcastReceiver{
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            switch (intent.getAction()){
+//                case Intent.ACTION_AIRPLANE_MODE_CHANGED:
+//                    Toast.makeText(context, "Airplane mode", Toast.LENGTH_SHORT).show();
+//                    break;
+//            }
+//        }
+//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +72,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         findViewById(R.id.view_blog).setOnClickListener( this);
 
         fetchProfile();
+
+//        mMyReceiver = new MyReceiver();
+//        registerReceiver(mMyReceiver, new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED));
 
     }
     private void fetchProfile(){
@@ -113,11 +131,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.logout:
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-                preferences.edit().remove("auth").apply();
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+               LogoutFragment f = LogoutFragment.newInstance("Are you sure you want this?");
+               f.show(getSupportFragmentManager(),"dialog");
+
                 break;
         }
         return true;
@@ -132,5 +148,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                 break;
         }
+    }
+
+    public void doPositiveClick() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        preferences.edit().remove("auth").apply();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

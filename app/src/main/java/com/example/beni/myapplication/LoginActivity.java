@@ -69,9 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                                 .putString("username",user)
                                 .apply();
                         Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
-//                    EditText editText = (EditText) findViewById(R.id.editText);
-//                    String message = editText.getText().toString();
-//                    intent.putExtra(EXTRA_MESSAGE, message);
+
                         startActivity(intent);}
                         else{
                             Context context = getApplicationContext();

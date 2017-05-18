@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.beni.myapplication">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +19,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".RepositoriesActivity"/>
+        <activity android:name=".RepositoriesActivity" />
+        <activity android:name=".RepositoryDetailsActivity" />
+        <receiver android:name=".AirplaneModeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.AIRPLANE_MODE"/>
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name=".db.GithubContentProvider"
+            android:authorities="com.example.beni.provider"
+            android:enabled="true"
+            android:exported="false"/>
     </application>
 
 </manifest>
