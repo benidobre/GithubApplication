@@ -75,7 +75,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onFailure(Call<GithubProfile> call, Throwable t) {
-                Toast.makeText(ProfileActivity.this,"esti si mai praf",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileActivity.this,t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
     }

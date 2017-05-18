@@ -13,13 +13,10 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.beni.myapplication.model.GitHub;
-import com.example.beni.myapplication.model.GithubProfile;
-import com.example.beni.myapplication.model.Repositori;
 import com.example.beni.myapplication.model.Repository;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -53,7 +50,7 @@ public class RepositoriesActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Repository>> call, Throwable t) {
-
+                Toast.makeText(RepositoriesActivity.this,t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -113,11 +110,7 @@ public class RepositoriesActivity extends AppCompatActivity {
                 mIsPublic.setChecked(!repository.getPrivate());
 
                 mTopics.removeAllViews();
-//                for(String topic: repository.getTopics()){
-//                    TextView topicTextView = new TextView(itemView.getContext());
-//                    topicTextView.setText(topic);
-//                    mTopics.addView(topicTextView);
-//                }
+
             }
         }
     }

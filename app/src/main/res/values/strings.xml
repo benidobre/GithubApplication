@@ -10,5 +10,15 @@
     <string name="_2"><u>2</u></string>
     <string name="logout">Logout</string>
     <string name="repo_name_owner">%1$s(%2$s)</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="bioo">Bio</string>
+    <string name="location">Location</string>
+    <string name="email">Email</string>
+    <string name="created">Created</string>
+    <string name="updated">Updated</string>
+    <string name="public_repos">Public Repos</string>
+    <string name="private_repos">Private Repos</string>
 
 </resources>

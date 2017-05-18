@@ -34,24 +34,20 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        findViewById(R.id.layout_login).setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                closeKeyboard(v);
-//                return false;
-//            }
-//        });
+
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         if(preferences.getString("auth",null)!= null){
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
             finish();
+            return;
         }
         Button b = (Button)findViewById(R.id.button);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                closeKeyboard(v);
                 EditText t = (EditText)findViewById(R.id.pass);
                 final String pass =t.getText().toString();
                 t = (EditText)findViewById(R.id.user);
@@ -69,11 +65,10 @@ public class LoginActivity extends AppCompatActivity {
                                 .putString("username",user)
                                 .apply();
                         Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
-//                    EditText editText = (EditText) findViewById(R.id.editText);
-//                    String message = editText.getText().toString();
-//                    intent.putExtra(EXTRA_MESSAGE, message);
-                        startActivity(intent);}
-                        else{
+
+                        startActivity(intent);
+                        finish();}
+                        else if (response.code() == 403){
                             Context context = getApplicationContext();
                             CharSequence text = "Wrong password or username!";
                             int duration = Toast.LENGTH_SHORT;
@@ -86,10 +81,9 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<LoginData> call, Throwable t) {
                         Context context = getApplicationContext();
-                        CharSequence text = "Wrong password or username!";
                         int duration = Toast.LENGTH_SHORT;
 
-                        Toast toast = Toast.makeText(context, text, duration);
+                        Toast toast = Toast.makeText(context, t.getMessage(), duration);
                         toast.show();
                     }
                 });
